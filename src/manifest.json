@@ -8,6 +8,14 @@
     "service_worker": "background/background.js",
     "type": "module"
   },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+O"
+      },
+      "description": "OpenSourceIn"
+    }
+  },
   "content_scripts": [
     {
       "matches": [
