@@ -63,6 +63,9 @@ export async function ensureDefaultSettings() {
     if (!items.autoOpenSingleFile) {
         await chrome.storage.sync.set({ autoOpenSingleFile: true });
     }
+    if (!items.projects) {
+        await chrome.storage.sync.set({ projects: [] });
+    }
 }
 
 export async function getSettings() {
