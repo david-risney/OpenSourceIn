@@ -11,11 +11,17 @@ body {
     display: grid;
     grid-template-areas:
         "title settings"
+        "filter filter"
         "list list";
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto 1fr;
     grid-template-columns: 1fr auto;
     height: 100vh;
     margin: 0;
+}
+
+
+#filter-file-list {
+    grid-area: filter;
 }
 
 h1 {

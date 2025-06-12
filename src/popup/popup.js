@@ -12,6 +12,7 @@ async function createSourcePathLink(entry) {
     }
     link.textContent = `${entry.repo} ${entry.remotePath}`;
     link.target = '_blank';
+    link.classList.add('source-path-link');
     return link;
 }
 
@@ -58,3 +59,33 @@ document.addEventListener('DOMContentLoaded', async (event) => {
 document.getElementById('settings-button').addEventListener('click', () => {
     chrome.runtime.openOptionsPage();
 });
+
+// Whenever the text of the filter changes, get all the source-path-links, hide the ones
+// that do not match the filter's text as a regex, and show the ones that do.
+document.getElementById('filter-file-list').addEventListener('input', (event) => {
+    const filterText = event.target.value.trim();
+    const regex = new RegExp(filterText, 'i');
+
+    const links = Array.from(document.querySelectorAll('.source-path-link'));
+    links.forEach(link => {
+        const show = !!regex.test(link.textContent);
+        link.parentElement.style.display = show ? '' : 'none';
+    });
+});
+
+// If the user hits enter in the filter text box and there is only one file that matches
+// the filter, open it in a new tab.
+document.getElementById('filter-file-list').addEventListener('keyup', async (event) => {
+    if (event.key === 'Enter') {
+        const visibleLinks = Array.from(document.querySelectorAll('.source-path-link'))
+            .filter(link => link.parentElement.style.display !== 'none');
+
+        if (visibleLinks.length === 1) {
+            const url = visibleLinks[0].href;
+            window.open(url, '_blank');
+        }
+    }
+});
+
+// Put focus on the filter text box when the popup opens.
+document.getElementById('filter-file-list').focus();
