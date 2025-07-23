@@ -6,7 +6,7 @@ It works in Edge and Chrome.
 
 ## Setup
 
-1. Install the extension from your browser's extension store.
+1. Install the extension from your browser's extension store ([Edge store](https://microsoftedge.microsoft.com/addons/detail/opensourcein/jkaelfleefdopjfbkdkdmdndcdlhnnoe), [Chrome store](https://chromewebstore.google.com/detail/opensourcein/femnmjnlfmmciojfjamifmfjookonhdl)).
 2. This will open the options page and let you set your local paths: 
    - If you only plan to use the extension with a single project, you can set the `Default Local Path` to the root folder of your project. This will be used as the base folder for all file mappings.
    - If you have multiple projects, you can add a new mapping for each project. You can either do this manually by pressing the `Add Project` button for each project or you can open tabs to the different projects you want to map and then press the `Auto Add Projects From Tabs` button. In either case, you need to set the `Local File Path` for each project listing.
